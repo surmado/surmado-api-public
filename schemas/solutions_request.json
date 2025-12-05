@@ -56,8 +56,8 @@
     },
     "include_financial": {
       "type": "string",
-      "enum": ["yes", "no"],
-      "description": "Include financial analysis"
+      "maxLength": 10,
+      "description": "Include financial analysis (e.g., yes, no, off)"
     },
     "financial_context": {
       "type": "string",

@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: Surmado API Examples
+message: "Reference examples for integrating with the Surmado API"
+type: software
+authors:
+  - name: "Surmado, Inc."
+    city: "San Diego"
+    region: "California"
+    country: "US"
+    website: "https://surmado.com"
+    email: "hi@surmado.com"
+repository-code: "https://github.com/surmado/surmado-api"
+url: "https://surmado.com"
+abstract: "API examples and integration guides for Surmado, an AI marketing intelligence platform. Includes code samples for SEO auditing (Scan), AI visibility testing (Signal), and strategic advisory (Solutions)."
+keywords:
+  - surmado
+  - api
+  - seo
+  - ai-visibility
+  - marketing-intelligence
+  - small-business
+  - chatgpt
+  - perplexity
+  - gemini
+  - claude
+license: MIT
+date-released: "2025-12-05"
+

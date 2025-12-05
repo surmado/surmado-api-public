@@ -36,9 +36,9 @@
     },
     "report_style": {
       "type": "string",
-      "enum": ["executive", "technical", "comprehensive"],
+      "maxLength": 50,
       "default": "executive",
-      "description": "Report style"
+      "description": "Report style (e.g., executive, technical, comprehensive)"
     },
     "competitor_urls": {
       "type": "array",

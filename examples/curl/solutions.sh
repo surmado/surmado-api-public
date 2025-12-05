@@ -2,11 +2,33 @@
 # Surmado Solutions - Multi-AI Strategic Advisory
 # Get strategic recommendations from multiple AI perspectives
 # Docs: https://help.surmado.com/docs/api-reference/
+#
+# Solutions has three modes:
+# 1. Signal Token Mode - Pass a signal_token, Solutions loads context automatically
+# 2. Standalone Qualitative - Provide business context directly
+# 3. Standalone + Financial - Add quantitative financial data
 
 # Required: Set your API key
 API_KEY="${SURMADO_API_KEY:-YOUR_API_KEY}"
 
-# Run strategic advisory (always pro tier: 2 credits, $50)
+# =============================================================================
+# MODE 1: Signal Token (Recommended)
+# Run Signal first, then pass the token. Solutions inherits context.
+# =============================================================================
+
+# curl -X POST https://api.surmado.com/v1/reports/solutions \
+#   -H "X-API-Key: $API_KEY" \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "you@example.com",
+#     "signal_token": "tok_from_your_signal_report"
+#   }'
+
+# =============================================================================
+# MODE 2: Standalone Qualitative
+# No Signal report needed. Provide business context directly.
+# =============================================================================
+
 curl -X POST https://api.surmado.com/v1/reports/solutions \
   -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
@@ -27,7 +49,11 @@ curl -X POST https://api.surmado.com/v1/reports/solutions \
 #   "credits_used": 2
 # }
 
-# With optional financial context
+# =============================================================================
+# MODE 3: Standalone + Financial Data (Qualitative + Quantitative)
+# Include financial context for deeper analysis.
+# =============================================================================
+
 # curl -X POST https://api.surmado.com/v1/reports/solutions \
 #   -H "X-API-Key: $API_KEY" \
 #   -H "Content-Type: application/json" \
@@ -45,4 +71,3 @@ curl -X POST https://api.surmado.com/v1/reports/solutions \
 #     "monthly_costs": "$140K",
 #     "cash_available": "$300K"
 #   }'
-

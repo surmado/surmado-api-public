@@ -41,9 +41,9 @@
     },
     "business_scale": {
       "type": "string",
-      "enum": ["small", "medium", "large"],
+      "maxLength": 50,
       "default": "medium",
-      "description": "Business scale"
+      "description": "Business scale (e.g., small, medium, large, national, enterprise)"
     },
     "location": {
       "type": "string",

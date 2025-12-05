@@ -1,10 +1,20 @@
 # Surmado API
 
-Official API examples and integrations for Surmado.
+Official API examples and integrations for [Surmado](https://surmado.com).
 
-Surmado is AI marketing intelligence for small business. SEO audits, AI visibility testing, and strategic analysis. Reports from $25. No subscriptions.
+## What is Surmado?
+
+Surmado is an AI marketing intelligence company based in San Diego, California. Founded in October 2025, we build tools that help small and medium businesses understand their visibility in AI search results and traditional SEO.
+
+**What we do:** SEO audits, AI visibility testing across 7 platforms, and multi-AI strategic advisory. Reports cost $25 to $50 and arrive in about 15 minutes. No subscriptions. No dashboards. Full API included with every report.
 
 ## Quick Start
+
+### Get an API Key
+
+1. Go to [surmado.com](https://surmado.com) and create an account
+2. Purchase credits ($25 = 1 credit, $50 = 2 credits)
+3. Generate an API key in your dashboard
 
 ### Authentication
 
@@ -50,6 +60,26 @@ curl -X POST https://api.surmado.com/v1/reports/signal \
 
 ### Run Strategic Advisory (Solutions)
 
+Solutions has three modes:
+
+**Mode 1: With Signal Token** (recommended)
+
+Run Signal first, then pass the token. Solutions inherits context automatically.
+
+```bash
+curl -X POST https://api.surmado.com/v1/reports/solutions \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "you@example.com",
+    "signal_token": "tok_from_your_signal_report"
+  }'
+```
+
+**Mode 2: Standalone (Qualitative)**
+
+No Signal report needed. Provide business context directly.
+
 ```bash
 curl -X POST https://api.surmado.com/v1/reports/solutions \
   -H "X-API-Key: YOUR_API_KEY" \
@@ -65,6 +95,30 @@ curl -X POST https://api.surmado.com/v1/reports/solutions \
   }'
 ```
 
+**Mode 3: Standalone + Financial Data (Qualitative + Quantitative)**
+
+Include financial context for deeper analysis.
+
+```bash
+curl -X POST https://api.surmado.com/v1/reports/solutions \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "brand_name": "Example Brand",
+    "email": "you@example.com",
+    "business_story": "We help small businesses grow online",
+    "decision": "Should we expand to new markets?",
+    "success": "Increase revenue by 50% in 12 months",
+    "timeline": "6-12 months",
+    "scale_indicator": "$500K annual revenue",
+    "include_financial": "yes",
+    "financial_context": "Profitable but reinvesting in growth",
+    "monthly_revenue": "$50K",
+    "monthly_costs": "$40K",
+    "cash_available": "$200K"
+  }'
+```
+
 ## How It Works
 
 1. **You send a request.** The API returns immediately with a `report_id` and `status: queued`.
@@ -76,11 +130,13 @@ Async by design. Webhook delivery. Stable JSON schema.
 
 ## Products
 
-| Product | What it does | Price | Tiers |
-|---------|--------------|-------|-------|
-| **Surmado Scan** | SEO auditing | $25 or $50 | basic (1 credit), premium (2 credits) |
-| **Surmado Signal** | AI visibility testing across 7 platforms | $25 or $50 | basic (1 credit), pro (2 credits) |
-| **Surmado Solutions** | Multi-AI strategic advisory | $50 | pro (2 credits) |
+| Product | What it does | Price | Credits |
+|---------|--------------|-------|---------|
+| **Surmado Scan** | SEO auditing | $25 or $50 | 1 (basic) or 2 (premium) |
+| **Surmado Signal** | AI visibility testing across 7 platforms | $25 or $50 | 1 (basic) or 2 (pro) |
+| **Surmado Solutions** | Multi-AI strategic advisory | $50 | 2 (pro only) |
+
+**Credits:** 1 credit = $25. Buy credits at [surmado.com](https://surmado.com). No subscriptions. Credits don't expire.
 
 ### AI Platforms Tested (Signal)
 
@@ -88,7 +144,13 @@ ChatGPT, Perplexity, Google Gemini, Claude, Meta AI, Grok, DeepSeek
 
 ### Surmado Scout
 
-Our AI marketing analyst. Scout reads every report and explains what matters in plain English. Included free with every report.
+Our AI marketing analyst. Free. No extra charge. Just buy a report.
+
+- **In reports:** Scout reads the analysis and explains what matters in plain English.
+- **On [help.surmado.com](https://help.surmado.com):** Ask Scout anything. RAG-powered access to all docs.
+- **On [app.surmado.com](https://app.surmado.com):** Scout sees your full report history. Discuss trends, compare reports, build graphs. The anti-dashboard.
+
+**How context works:** Every report you run gives Scout more context. Context is filtered by `brand_slug`, so Scout compares apples to apples. Agencies and consultants can track multiple brands separately. Each brand gets its own history.
 
 ## Response Format
 
@@ -97,8 +159,9 @@ All report creation endpoints return HTTP 202 Accepted:
 ```json
 {
   "report_id": "rpt_abc123def456",
+  "token": "tok_xyz789abc123",
   "org_id": "org_xyz789",
-  "product": "scan",
+  "product": "signal",
   "status": "queued",
   "brand_slug": "example_brand",
   "brand_name": "Example Brand",
@@ -106,6 +169,8 @@ All report creation endpoints return HTTP 202 Accepted:
   "created_at": "2025-01-15T10:30:00Z"
 }
 ```
+
+The `token` field is used for Solutions Mode 1. Save it if you plan to run Solutions after Signal.
 
 ### Checking Status
 
@@ -166,9 +231,15 @@ Requirements:
 
 ## Documentation
 
-Full API documentation: [help.surmado.com/docs/api-reference/](https://help.surmado.com/docs/api-reference/)
+| Resource | What's there |
+|----------|--------------|
+| [API Reference](https://help.surmado.com/docs/api-reference/) | Full endpoint docs, code snippets in Python/Node.js/cURL |
+| [Help Center](https://help.surmado.com/) | Guides, tutorials, SEO and GEO fundamentals |
+| [Interactive Explorer](https://api.surmado.com/docs) | Test endpoints directly in your browser |
 
-Interactive API explorer: [api.surmado.com/docs](https://api.surmado.com/docs)
+**Scout on help.surmado.com:** The chatbot has RAG access to all documentation. Ask it anything about the API, GEO, or SEO.
+
+**Scout on app.surmado.com:** Same AI, but with access to your historical reports. Discuss trends, build graphs, dig into dense reports. Scout is the anti-dashboard. Tuned for answers, not BS.
 
 ## Examples
 
@@ -182,11 +253,22 @@ Interactive API explorer: [api.surmado.com/docs](https://api.surmado.com/docs)
 - [Make](./examples/integrations/make/)
 - [n8n](./examples/integrations/n8n/)
 
+## About Surmado
+
+**Company:** Surmado, Inc.  
+**Location:** San Diego, California, United States  
+**Founded:** October 2025  
+**Website:** [surmado.com](https://surmado.com)  
+**Contact:** [hi@surmado.com](mailto:hi@surmado.com)
+
+Surmado builds enterprise-grade AI tools at small-business prices. We believe technology should make things easier and cheaper, not harder and more expensive.
+
 ## Links
 
 - Website: [surmado.com](https://surmado.com)
 - API Docs: [help.surmado.com](https://help.surmado.com/docs/api-reference/)
-- Contact: [hi@surmado.com](mailto:hi@surmado.com)
+- Help Center: [help.surmado.com](https://help.surmado.com)
+- YouTube: [@surmado](https://youtube.com/@surmado)
 - Twitter: [@surmado](https://twitter.com/surmado)
 - LinkedIn: [linkedin.com/company/surmado](https://linkedin.com/company/surmado)
 
