@@ -19,7 +19,7 @@ Thanks for your interest in contributing.
 
 - Changes to JSON schemas (these match our API contract)
 - Marketing or promotional content
-- Speculative features
+- Speculative features (email us about those!)
 
 ## Code Style
 
@@ -28,7 +28,6 @@ Thanks for your interest in contributing.
 - Add comments explaining non-obvious behavior
 - Test your examples before submitting
 
-## Questions?
+## Questions or feature requests?
 
 Email [hi@surmado.com](mailto:hi@surmado.com)
-
