@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SolutionsRequest",
+  "description": "Request body for POST /reports/solutions - Multi-AI strategic advisory",
+  "type": "object",
+  "required": ["email"],
+  "anyOf": [
+    { "required": ["brand_slug"] },
+    { "required": ["brand_name"] },
+    { "required": ["signal_token"] }
+  ],
+  "properties": {
+    "brand_slug": {
+      "type": "string",
+      "description": "Existing brand slug"
+    },
+    "brand_name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Brand name (we'll auto-create brand_slug if not provided)"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email for notifications"
+    },
+    "signal_token": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Signal report token (if provided, Solutions loads context from Signal and other fields become optional)"
+    },
+    "business_story": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Tell us about your business (required without signal_token)"
+    },
+    "decision": {
+      "type": "string",
+      "maxLength": 1500,
+      "description": "Key decision or challenge you're facing (required without signal_token)"
+    },
+    "success": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "What does success look like? (required without signal_token)"
+    },
+    "timeline": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Timeline for decision (required without signal_token)"
+    },
+    "scale_indicator": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Business scale indicator (required without signal_token)"
+    },
+    "include_financial": {
+      "type": "string",
+      "enum": ["yes", "no"],
+      "description": "Include financial analysis"
+    },
+    "financial_context": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Financial context"
+    },
+    "monthly_revenue": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Monthly revenue"
+    },
+    "monthly_costs": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Monthly costs"
+    },
+    "cash_available": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Cash available"
+    },
+    "webhook_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to receive completion webhook (HTTPS required)"
+    },
+    "is_agency_white_label": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable white-label mode for agencies"
+    },
+    "agency_name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Agency name for white-label outputs"
+    }
+  }
+}
+

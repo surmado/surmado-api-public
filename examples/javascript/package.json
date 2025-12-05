@@ -1,0 +1,16 @@
+{
+  "name": "surmado-api-examples",
+  "version": "1.0.0",
+  "description": "Surmado API JavaScript examples",
+  "type": "commonjs",
+  "scripts": {
+    "scan": "node scan_example.js",
+    "signal": "node signal_example.js",
+    "solutions": "node solutions_example.js",
+    "webhook": "node webhook_handler.js"
+  },
+  "keywords": ["surmado", "api", "seo", "ai-visibility", "marketing"],
+  "author": "Surmado, Inc.",
+  "license": "MIT"
+}
+

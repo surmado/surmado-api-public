@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WebhookPayload",
+  "description": "Payload sent to webhook_url when a report completes or fails",
+  "type": "object",
+  "required": ["report_id", "product", "status"],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "description": "Report identifier"
+    },
+    "product": {
+      "type": "string",
+      "enum": ["scan", "signal", "solutions"],
+      "description": "Product type"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed"],
+      "description": "Final report status"
+    },
+    "brand_slug": {
+      "type": "string",
+      "description": "Brand identifier"
+    },
+    "brand_name": {
+      "type": "string",
+      "description": "Brand display name"
+    },
+    "download_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Signed URL for PDF download (expires in 15 minutes)"
+    },
+    "pptx_download_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Signed URL for PPTX download (Pro/Premium tiers)"
+    },
+    "intelligence_download_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Signed URL for JSON data download"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 completion timestamp"
+    },
+    "error": {
+      "type": ["string", "null"],
+      "description": "Error message (if failed)"
+    },
+    "error_code": {
+      "type": ["string", "null"],
+      "description": "Machine-readable error code (if failed)"
+    }
+  }
+}
+
