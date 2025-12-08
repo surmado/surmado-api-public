@@ -149,6 +149,39 @@ curl -X POST https://api.surmado.com/v1/reports/solutions \
   }'
 ```
 
+### Rerun Endpoints (Automation-Friendly)
+
+Once you've set up a brand in the Surmado dashboard, use minimal inputs for automated reports:
+
+**Signal Rerun** — Just 4 fields instead of 10+
+
+```bash
+curl -X POST https://api.surmado.com/v1/reports/signal/rerun \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "brand_slug": "example_brand",
+    "persona_slug": "cto-enterprise",
+    "email": "you@example.com",
+    "tier": "basic"
+  }'
+```
+
+**Scan Rerun** — Just 3 fields
+
+```bash
+curl -X POST https://api.surmado.com/v1/reports/scan/rerun \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "brand_slug": "example_brand",
+    "email": "you@example.com",
+    "tier": "premium"
+  }'
+```
+
+Perfect for Zapier/Make/n8n workflows and scheduled monitoring.
+
 ## How It Works
 
 1. **You send a request.** The API returns immediately with a `report_id` and `status: queued`.

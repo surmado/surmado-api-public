@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SignalRerunRequest",
+  "description": "Request body for POST /reports/signal/rerun - Minimal Signal re-run using stored brand context",
+  "type": "object",
+  "required": ["brand_slug", "persona_slug", "email"],
+  "properties": {
+    "brand_slug": {
+      "type": "string",
+      "description": "Brand identifier (must exist with populated brand_context)"
+    },
+    "persona_slug": {
+      "type": "string",
+      "description": "Persona slug from brand_context.personas (e.g., 'cto-enterprise')"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email for notifications"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["basic", "pro"],
+      "default": "basic",
+      "description": "basic (1 credit, $25) or pro (2 credits, $50)"
+    }
+  }
+}
+

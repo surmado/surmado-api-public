@@ -35,3 +35,4 @@ curl -X POST https://api.surmado.com/v1/reports/scan \
 #     "competitor_urls": ["https://competitor1.com", "https://competitor2.com"]
 #   }'
 
+

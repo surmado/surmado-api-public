@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ScanRerunRequest",
+  "description": "Request body for POST /reports/scan/rerun - Minimal Scan re-run using stored brand context",
+  "type": "object",
+  "required": ["brand_slug", "email"],
+  "properties": {
+    "brand_slug": {
+      "type": "string",
+      "description": "Brand identifier (must exist with brand_context.website)"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email for notifications"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["basic", "premium"],
+      "default": "basic",
+      "description": "basic (1 credit, $25) or premium (2 credits, $50)"
+    }
+  }
+}
+

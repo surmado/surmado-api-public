@@ -29,6 +29,11 @@
       "maxLength": 50,
       "description": "Signal report token (if provided, Solutions loads context from Signal and other fields become optional)"
     },
+    "scan_token": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Scan report token (optional, adds SEO/technical context alongside Signal)"
+    },
     "business_story": {
       "type": "string",
       "maxLength": 2000,

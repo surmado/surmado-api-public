@@ -26,3 +26,4 @@ curl -s https://api.surmado.com/v1/reports/$REPORT_ID \
 #   echo "Downloaded report data to report_data.json"
 # fi
 
+
