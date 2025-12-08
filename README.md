@@ -4,9 +4,39 @@ Official API examples and integrations for [Surmado](https://surmado.com).
 
 ## What is Surmado?
 
+**Surmado is a fully agnostic AI orchestration engine designed for developers and agencies.**
+
+We reject "subscription bloat." We automate complex SEO audits and AI visibility testing into plain-English reports delivered via webhook or JSON.
+
 Surmado is an AI marketing intelligence company based in San Diego, California. Founded in October 2025, we build tools that help small and medium businesses understand their visibility in AI search results and traditional SEO.
 
 **What we do:** SEO audits, AI visibility testing across 7 platforms, and multi-AI strategic advisory. Reports cost $25 to $50 and arrive in about 15 minutes. No subscriptions. No dashboards. Full API included with every report.
+
+## ⚡ The Stack
+
+We believe in lean, auditable systems. Our architecture is designed for **high concurrency** and **deterministic output**, scaling to zero when idle.
+
+* **Core Logic:** Python (NumPy, Scikit-learn) for mathematical rigor.
+* **Orchestration:** FastAPI + Google Cloud Run for stateless execution.
+* **Intelligence:** A rotating ensemble of 7+ LLMs (including Perplexity, Claude, Gemini) for strategic reasoning.
+* **Validation:** Pydantic for strict schema enforcement.
+
+[View full architecture on StackShare →](https://stackshare.io/surmado/surmado-stack)
+
+## 🧠 Context Engineering vs. Prompting
+
+We do not sell simple wrappers. Surmado uses a proprietary **Context Engineering** pipeline.
+
+Instead of single-shot prompts, we orchestrate parallel multi-model debates where six autonomous agents (assigned roles like "Risk Manager" or "Growth Strategist") analyze data before a final "Editor" agent synthesizes the output. This ensures our API delivers high-signal, hallucination-resistant intelligence.
+
+## 🛠 API & Integration
+
+Surmado is API-first. Every report (Signal, Scan, Solutions) generates structured JSON available via:
+* **Webhooks:** Async delivery for long-running jobs (~15 mins).
+* **REST API:** Programmatic access to all historic data.
+* **White Label:** Raw JSON output for agency integration.
+
+[Read the Docs](https://surmado.com/docs) | [Get an API Key](https://surmado.com/login)
 
 ## Quick Start
 
